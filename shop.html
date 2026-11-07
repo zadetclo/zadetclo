@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин — ЗАДЕТ</title>
+    <title>Скоро — ЗАДЕТ</title>
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,8 +14,8 @@
             color: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
-        /* Зернистость */
         body::before {
             content: '';
             position: fixed;
@@ -39,22 +39,9 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid #222;
         }
-        
-        /* ЛОГОТИП */
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        .logo img {
-            height: 45px;
-            width: auto;
-            transition: transform 0.3s;
-        }
-        .logo:hover img { transform: scale(1.05); }
+        .logo { display: flex; align-items: center; text-decoration: none; transition: opacity 0.3s; }
+        .logo img { height: 45px; width: auto; }
         .logo:hover { opacity: 0.8; }
-
         nav ul { display: flex; gap: 35px; list-style: none; }
         nav a {
             color: var(--white);
@@ -63,50 +50,9 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             opacity: 0.7;
-            position: relative;
             transition: opacity 0.3s;
         }
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px; left: 0;
-            width: 0; height: 1px;
-            background: var(--white);
-            transition: width 0.3s;
-        }
-        nav a:hover::after, nav a.active::after { width: 100%; }
         nav a:hover, nav a.active { opacity: 1; }
-
-        /* КОРЗИНА В ХЕДЕРЕ */
-        .cart-btn {
-            background: none;
-            border: 1px solid #333;
-            color: var(--white);
-            padding: 10px 18px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            position: relative;
-            transition: all 0.3s;
-        }
-        .cart-btn:hover { border-color: var(--white); background: #151515; }
-        #cart-count {
-            position: absolute;
-            top: -8px; right: -8px;
-            background: var(--white);
-            color: var(--black);
-            min-width: 20px; height: 20px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        /* БУРГЕР */
         .burger {
             display: none;
             flex-direction: column;
@@ -118,252 +64,109 @@
         }
         .burger span { width: 28px; height: 2px; background: var(--white); }
 
-        /* ШАПКА МАГАЗИНА */
-        .shop-hero {
-            padding: 160px 40px 60px;
+        /* ОСНОВНОЙ БЛОК */
+        .soon-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 140px 40px 80px;
             text-align: center;
-            border-bottom: 1px solid #222;
         }
-        .shop-hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(48px, 8vw, 100px);
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-        .shop-hero p {
-            font-size: 13px;
-            letter-spacing: 5px;
+        .soon-tag {
+            font-size: 12px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             opacity: 0.5;
+            margin-bottom: 30px;
+            animation: fadeUp 1s ease;
         }
-
-        /* ФИЛЬТРЫ */
-        .filters {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 40px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .filter-btn {
-            background: none;
-            border: 1px solid #333;
-            color: var(--white);
-            padding: 12px 28px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-size: 12px;
-            letter-spacing: 3px;
+        .soon-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(70px, 14vw, 180px);
+            letter-spacing: 14px;
             text-transform: uppercase;
-            transition: all 0.3s;
+            line-height: 1;
+            margin-bottom: 30px;
+            position: relative;
+            animation: fadeUp 1s ease 0.1s backwards;
         }
-        .filter-btn:hover { border-color: var(--white); }
-        .filter-btn.active {
-            background: var(--white);
-            color: var(--black);
-            border-color: var(--white);
+        .soon-title::before, .soon-title::after {
+            content: 'СКОРО';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            font-family: inherit;
+            font-size: inherit;
+            letter-spacing: inherit;
+            opacity: 0.12;
+        }
+        .soon-title::before { color: #ff0033; transform: translate(-3px, 0); }
+        .soon-title::after  { color: #00eaff; transform: translate(3px, 0); }
+
+        .soon-sub {
+            font-size: 14px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            max-width: 520px;
+            margin: 0 auto 50px;
+            line-height: 2;
+            animation: fadeUp 1s ease 0.2s backwards;
         }
 
-        /* ТОВАРЫ */
-        .products {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 40px 120px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 30px;
+        /* РАЗДЕЛИТЕЛЬ */
+        .divider {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--white), transparent);
+            margin: 0 auto 50px;
+            animation: fadeUp 1s ease 0.3s backwards;
         }
-        .product-card {
-            border: 1px solid #222;
-            background: var(--gray);
-            overflow: hidden;
-            transition: 0.3s;
-        }
-        .product-card:hover {
-            border-color: #555;
-            transform: translateY(-4px);
-        }
-        .product-img {
+
+        /* ФОРМА ПОДПИСКИ */
+        .subscribe-block {
+            max-width: 520px;
             width: 100%;
-            aspect-ratio: 3/4;
-            overflow: hidden;
-            background: #111;
+            animation: fadeUp 1s ease 0.4s backwards;
         }
-        .product-img img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: transform 0.6s;
-        }
-        .product-card:hover .product-img img { transform: scale(1.06); }
-        .product-info {
-            padding: 22px 20px;
-            text-align: center;
-        }
-        .product-name {
+        .subscribe-block h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 22px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 15px;
         }
-        .product-price {
-            font-size: 14px;
-            letter-spacing: 3px;
-            opacity: 0.7;
+        .subscribe-block p {
+            font-size: 13px;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-bottom: 30px;
         }
-        .add-btn {
-            margin-top: 15px;
+
+        .subscribe-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .subscribe-form input {
             width: 100%;
-            padding: 14px;
-            background: transparent;
+            padding: 16px 20px;
+            background: #0d0d0d;
             border: 1px solid #333;
             color: var(--white);
             font-family: 'Inter', sans-serif;
-            font-size: 11px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: border-color 0.3s;
         }
-        .add-btn:hover {
-            background: var(--white);
-            color: var(--black);
+        .subscribe-form input:focus {
+            outline: none;
             border-color: var(--white);
         }
+        .subscribe-form input::placeholder { color: #555; }
 
-        /* КОРЗИНА (боковая панель) */
-        .cart-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 200;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        .cart-overlay.open { opacity: 1; pointer-events: all; }
-        .cart-panel {
-            position: fixed;
-            top: 0; right: -480px;
-            width: 100%;
-            max-width: 460px;
-            height: 100vh;
-            background: #0f0f0f;
-            border-left: 1px solid #333;
-            z-index: 201;
-            display: flex;
-            flex-direction: column;
-            transition: right 0.4s;
-        }
-        .cart-panel.open { right: 0; }
-        .cart-header {
-            padding: 30px;
-            border-bottom: 1px solid #222;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .cart-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-        }
-        .cart-close {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 28px;
-            cursor: pointer;
-            padding: 0 10px;
-        }
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px 30px;
-        }
-        .cart-empty {
-            text-align: center;
-            opacity: 0.4;
-            margin-top: 60px;
-            letter-spacing: 3px;
-            font-size: 13px;
-            text-transform: uppercase;
-        }
-        .cart-item {
-            display: flex;
-            gap: 15px;
-            padding: 20px 0;
-            border-bottom: 1px solid #222;
-            position: relative;
-        }
-        .cart-item-img {
-            width: 80px; height: 100px;
-            object-fit: cover;
-            filter: grayscale(100%);
-            border: 1px solid #222;
-        }
-        .cart-item-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .cart-item-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        .cart-item-price {
-            font-size: 13px;
-            opacity: 0.7;
-            letter-spacing: 2px;
-        }
-        .cart-item-qty {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 8px;
-        }
-        .cart-item-qty button {
-            background: none;
-            border: 1px solid #333;
-            color: var(--white);
-            width: 26px; height: 26px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .cart-item-qty button:hover { background: var(--white); color: var(--black); }
-        .cart-item-qty span { min-width: 20px; text-align: center; font-size: 14px; }
-        .cart-item-remove {
-            background: none;
-            border: none;
-            color: var(--white);
-            opacity: 0.4;
-            cursor: pointer;
-            font-size: 16px;
-            align-self: flex-start;
-        }
-        .cart-item-remove:hover { opacity: 1; }
-        .cart-footer {
-            padding: 25px 30px;
-            border-top: 1px solid #222;
-        }
-        .cart-total-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            font-size: 15px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        .cart-total-row strong { font-family: 'Cormorant Garamond', serif; font-size: 24px; }
-        .checkout-btn {
+        .subscribe-btn {
             width: 100%;
             padding: 18px;
             background: var(--white);
@@ -371,14 +174,61 @@
             border: none;
             font-family: 'Inter', sans-serif;
             font-size: 12px;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             cursor: pointer;
             transition: 0.3s;
+            font-weight: 600;
         }
-        .checkout-btn:hover { background: #ddd; }
+        .subscribe-btn:hover { background: #ddd; letter-spacing: 7px; }
+        .subscribe-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
 
-        /* АДАПТИВ */
+        .form-message {
+            padding: 16px;
+            margin-top: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+            font-size: 12px;
+            text-transform: uppercase;
+            display: none;
+        }
+        .form-message.success {
+            display: block;
+            border: 1px solid #3a3;
+            color: #8f8;
+            background: #0a1a0a;
+        }
+        .form-message.error {
+            display: block;
+            border: 1px solid #a33;
+            color: #f88;
+            background: #0a1a0a;
+        }
+
+        /* Кнопка на главную */
+        .back-btn {
+            display: inline-block;
+            margin-top: 60px;
+            padding: 14px 36px;
+            border: 1px solid #333;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            animation: fadeUp 1s ease 0.6s backwards;
+        }
+        .back-btn:hover {
+            border-color: var(--white);
+            background: #151515;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 900px) {
             header { padding: 15px 20px; }
             .logo img { height: 32px; }
@@ -397,14 +247,8 @@
             nav.open { right: 0; }
             nav ul { flex-direction: column; gap: 28px; }
             nav a { font-size: 16px; letter-spacing: 4px; opacity: 1; }
-            .shop-hero { padding: 130px 20px 40px; }
-            .filters { padding: 30px 20px; }
-            .products { padding: 0 20px 80px; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
-            .product-info { padding: 15px 12px; }
-            .product-name { font-size: 16px; letter-spacing: 2px; }
-            .product-price { font-size: 12px; }
-            .add-btn { font-size: 9px; padding: 12px 6px; letter-spacing: 2px; }
-            .cart-panel { max-width: 100%; }
+            .soon-page { padding: 110px 20px 60px; }
+            .soon-title { letter-spacing: 8px; }
         }
     </style>
 </head>
@@ -419,117 +263,114 @@
         <ul>
             <li><a href="shop.html" class="active">Магазин</a></li>
             <li><a href="index.html#collections">Коллекции</a></li>
-            <li><a href="index.html#custom">Пошив</a></li>
+            <li><a href="custom.html">Пошив</a></li>
             <li><a href="index.html#about">О бренде</a></li>
             <li><a href="index.html#contact">Контакты</a></li>
         </ul>
     </nav>
-    <button class="cart-btn" id="cart-btn">
-        Корзина
-        <span id="cart-count">0</span>
-    </button>
 </header>
 
-<section class="shop-hero">
-    <h1>Магазин</h1>
-    <p>Выбери свой силуэт</p>
+<section class="soon-page">
+    <p class="soon-tag">Магазин в разработке</p>
+    <h1 class="soon-title">Скоро</h1>
+    <p class="soon-sub">
+        Первая коллекция уже в работе.<br>
+        Оставь контакт — сообщим первым, когда дроп будет готов
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="subscribe-block">
+        <h2>Узнать первым</h2>
+        <p>Оставь почту или Telegram — напишем, когда откроется магазин</p>
+
+        <form class="subscribe-form" id="subscribe-form" action="https://formspree.io/f/xoeezkeq" method="POST">
+            <input type="email" name="email" required placeholder="Email *">
+            <input type="text" name="telegram" placeholder="Telegram (@username)">
+            <input type="hidden" name="form_type" value="Подписка на дроп">
+            <button type="submit" class="subscribe-btn" id="subscribe-btn">Подписаться</button>
+            <div class="form-message" id="form-message"></div>
+        </form>
+    </div>
+
+    <a href="index.html" class="back-btn">← На главную</a>
 </section>
 
-<div class="filters" id="filters">
-    <button class="filter-btn active" data-filter="all">Все</button>
-    <button class="filter-btn" data-filter="hoodie">Худи</button>
-    <button class="filter-btn" data-filter="tshirt">Футболки</button>
-    <button class="filter-btn" data-filter="pants">Штаны</button>
-    <button class="filter-btn" data-filter="accessory">Аксессуары</button>
-</div>
-
-<div class="products" id="products"></div>
-
-<div class="cart-overlay" id="cart-overlay"></div>
-<aside class="cart-panel" id="cart-panel">
-    <div class="cart-header">
-        <h2>Корзина</h2>
-        <button class="cart-close" id="cart-close">✕</button>
-    </div>
-    <div class="cart-items" id="cart-items"></div>
-    <div class="cart-footer">
-        <div class="cart-total-row">
-            <span>Итого</span>
-            <strong id="cart-total">0 ₽</strong>
-        </div>
-        <button class="checkout-btn" id="checkout-btn">Оформить заказ</button>
-    </div>
-</aside>
-
-<script src="cart.js"></script>
+<script src="telegram-config.js"></script>
 <script>
-    var products = [
-        { id: 'h1', name: 'Худи Тьма', price: 4900, category: 'hoodie', image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600' },
-        { id: 'h2', name: 'Худи Гранж', price: 5500, category: 'hoodie', image: 'https://images.unsplash.com/photo-1578681994506-b8f463449011?w=600' },
-        { id: 't1', name: 'Футболка Пепел', price: 2500, category: 'tshirt', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600' },
-        { id: 't2', name: 'Футболка Хаос', price: 2900, category: 'tshirt', image: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600' },
-        { id: 'p1', name: 'Штаны Карго', price: 6200, category: 'pants', image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=600' },
-        { id: 'p2', name: 'Штаны Ночь', price: 5900, category: 'pants', image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600' },
-        { id: 'a1', name: 'Шапка Безликий', price: 1900, category: 'accessory', image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=600' },
-        { id: 'a2', name: 'Сумка Ритуал', price: 3400, category: 'accessory', image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600' }
-    ];
-
-    var productsContainer = document.getElementById('products');
-    var currentFilter = 'all';
-
-    function renderProducts() {
-        var filtered = currentFilter === 'all'
-            ? products
-            : products.filter(function(p) { return p.category === currentFilter; });
-
-        var html = '';
-        for (var i = 0; i < filtered.length; i++) {
-            var p = filtered[i];
-            html += '<div class="product-card">';
-            html += '<div class="product-img"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy"></div>';
-            html += '<div class="product-info">';
-            html += '<div class="product-name">' + p.name + '</div>';
-            html += '<div class="product-price">' + p.price + ' &#8381;</div>';
-            html += '<button class="add-btn" data-id="' + p.id + '">В корзину</button>';
-            html += '</div></div>';
-        }
-        productsContainer.innerHTML = html;
-
-        var buttons = productsContainer.querySelectorAll('.add-btn');
-        for (var j = 0; j < buttons.length; j++) {
-            buttons[j].addEventListener('click', function() {
-                var id = this.getAttribute('data-id');
-                var product = null;
-                for (var k = 0; k < products.length; k++) {
-                    if (products[k].id === id) { product = products[k]; break; }
-                }
-                if (product) addToCart(product.id, product.name, product.price, product.image);
-            });
-        }
-    }
-
-    var filterBtns = document.querySelectorAll('.filter-btn');
-    for (var i = 0; i < filterBtns.length; i++) {
-        filterBtns[i].addEventListener('click', function() {
-            for (var j = 0; j < filterBtns.length; j++) {
-                filterBtns[j].classList.remove('active');
-            }
-            this.classList.add('active');
-            currentFilter = this.getAttribute('data-filter');
-            renderProducts();
-        });
-    }
-
-    renderProducts();
-
-    // Бургер
     var burger = document.getElementById('burger');
     var nav = document.getElementById('nav');
-    burger.addEventListener('click', function() { nav.classList.toggle('open'); });
-    var links = nav.querySelectorAll('a');
-    for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', function() { nav.classList.remove('open'); });
+    if (burger && nav) {
+        burger.addEventListener('click', function() { nav.classList.toggle('open'); });
+        var navLinks = nav.querySelectorAll('a');
+        for (var i = 0; i < navLinks.length; i++) {
+            navLinks[i].addEventListener('click', function() { nav.classList.remove('open'); });
+        }
     }
+
+    function sendToTelegram(text) {
+        if (typeof TELEGRAM_BOT_TOKEN === 'undefined' || TELEGRAM_BOT_TOKEN.indexOf('ВСТАВЬ') !== -1) {
+            return Promise.resolve();
+        }
+        var promises = [];
+        for (var i = 0; i < TELEGRAM_CHAT_IDS.length; i++) {
+            promises.push(
+                fetch('https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_IDS[i], text: text })
+                }).catch(function() {})
+            );
+        }
+        return Promise.all(promises);
+    }
+
+    var form = document.getElementById('subscribe-form');
+    var submitBtn = document.getElementById('subscribe-btn');
+    var formMessage = document.getElementById('form-message');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка...';
+        formMessage.className = 'form-message';
+        formMessage.textContent = '';
+
+        var formData = new FormData(form);
+        var email = formData.get('email');
+        var telegram = formData.get('telegram');
+
+        var tgText = '🔔 НОВАЯ ПОДПИСКА НА ДРОП — ЗАДЕТ\n\n';
+        tgText += '📧 Email: ' + (email || '—') + '\n';
+        if (telegram) tgText += '💬 Telegram: ' + telegram;
+
+        var mailPromise = fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        var tgPromise = sendToTelegram(tgText);
+
+        Promise.all([mailPromise, tgPromise])
+        .then(function(results) {
+            if (results[0] && results[0].ok) {
+                formMessage.textContent = '✓ Готово! Сообщим, когда откроемся 🖤';
+                formMessage.className = 'form-message success';
+                form.reset();
+            } else {
+                throw new Error('Ошибка');
+            }
+        })
+        .catch(function() {
+            formMessage.textContent = 'Что-то пошло не так. Попробуй ещё раз.';
+            formMessage.className = 'form-message error';
+        })
+        .finally(function() {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Подписаться';
+        });
+    });
 </script>
 
 </body>

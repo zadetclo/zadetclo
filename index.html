@@ -213,64 +213,7 @@
             opacity: 0.5;
         }
 
-        /* ===== КАТЕГОРИИ ===== */
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .cat-card {
-            position: relative;
-            aspect-ratio: 3/4;
-            overflow: hidden;
-            border: 1px solid #222;
-            cursor: pointer;
-            background: var(--gray);
-            text-decoration: none;
-            display: block;
-        }
-        .cat-card img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.1);
-            transition: transform 0.7s, filter 0.5s;
-        }
-        .cat-card:hover img {
-            transform: scale(1.08);
-            filter: grayscale(0%) contrast(1.2);
-        }
-        .cat-card-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
-        }
-        .cat-card-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--white);
-        }
-        .cat-card-arrow {
-            margin-top: 10px;
-            font-size: 12px;
-            letter-spacing: 4px;
-            opacity: 0.6;
-            transition: opacity 0.3s, letter-spacing 0.3s;
-            color: var(--white);
-        }
-        .cat-card:hover .cat-card-arrow {
-            opacity: 1;
-            letter-spacing: 8px;
-        }
-
-        /* ===== АНОНС КОЛЛЕКЦИИ ===== */
+        /* ===== АНОНС КОЛЛЕКЦИИ / МАГАЗИН ===== */
         .collection-banner {
             text-align: center;
             max-width: 900px;
@@ -453,41 +396,17 @@
     <div class="hero-line"></div>
 </section>
 
-<!-- ===== МАГАЗИН / КАТЕГОРИИ ===== -->
+<!-- ===== МАГАЗИН (СКОРО) ===== -->
 <section id="shop">
     <div class="section-head">
         <h2 class="section-title">Магазин</h2>
-        <p class="section-sub">Выбери свой силуэт</p>
+        <p class="section-sub">Скоро открытие</p>
     </div>
-    <div class="categories">
-        <a href="shop.html" class="cat-card">
-            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800" alt="Худи">
-            <div class="cat-card-overlay">
-                <span class="cat-card-title">Худи</span>
-                <span class="cat-card-arrow">→ Смотреть</span>
-            </div>
-        </a>
-        <a href="shop.html" class="cat-card">
-            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800" alt="Футболки">
-            <div class="cat-card-overlay">
-                <span class="cat-card-title">Футболки</span>
-                <span class="cat-card-arrow">→ Смотреть</span>
-            </div>
-        </a>
-        <a href="shop.html" class="cat-card">
-            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=800" alt="Штаны">
-            <div class="cat-card-overlay">
-                <span class="cat-card-title">Штаны</span>
-                <span class="cat-card-arrow">→ Смотреть</span>
-            </div>
-        </a>
-        <a href="shop.html" class="cat-card">
-            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800" alt="Аксессуары">
-            <div class="cat-card-overlay">
-                <span class="cat-card-title">Аксессуары</span>
-                <span class="cat-card-arrow">→ Смотреть</span>
-            </div>
-        </a>
+    <div class="collection-banner">
+        <p class="collection-tag">Первая коллекция</p>
+        <h3 class="collection-name">СКОРО</h3>
+        <p style="opacity:0.7; max-width:600px; margin: 0 auto 30px;">Мы готовим первую коллекцию. Оставь контакт — сообщим первым, когда всё будет готово.</p>
+        <a href="shop.html" class="btn btn--inverse">Подписаться на анонс</a>
     </div>
 </section>
 

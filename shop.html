@@ -26,7 +26,6 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        /* ХЕДЕР */
         header {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -64,7 +63,6 @@
         }
         .burger span { width: 28px; height: 2px; background: var(--white); }
 
-        /* ОСНОВНОЙ БЛОК */
         .soon-page {
             min-height: 100vh;
             display: flex;
@@ -115,7 +113,6 @@
             animation: fadeUp 1s ease 0.2s backwards;
         }
 
-        /* РАЗДЕЛИТЕЛЬ */
         .divider {
             width: 1px;
             height: 60px;
@@ -124,9 +121,8 @@
             animation: fadeUp 1s ease 0.3s backwards;
         }
 
-        /* ФОРМА ПОДПИСКИ */
         .subscribe-block {
-            max-width: 520px;
+            max-width: 560px;
             width: 100%;
             animation: fadeUp 1s ease 0.4s backwards;
         }
@@ -137,11 +133,55 @@
             text-transform: uppercase;
             margin-bottom: 15px;
         }
-        .subscribe-block p {
+        .subscribe-block > p {
             font-size: 13px;
             letter-spacing: 2px;
             opacity: 0.5;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+        }
+
+        .telegram-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px;
+            background: var(--white);
+            color: var(--black);
+            border: none;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 25px;
+        }
+        .telegram-btn:hover { background: #ddd; letter-spacing: 6px; }
+        .telegram-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+            opacity: 0.4;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #333;
         }
 
         .subscribe-form {
@@ -169,19 +209,18 @@
         .subscribe-btn {
             width: 100%;
             padding: 18px;
-            background: var(--white);
-            color: var(--black);
-            border: none;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid #333;
             font-family: 'Inter', sans-serif;
             font-size: 12px;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             cursor: pointer;
             transition: 0.3s;
-            font-weight: 600;
         }
-        .subscribe-btn:hover { background: #ddd; letter-spacing: 7px; }
-        .subscribe-btn:disabled { background: #333; color: #666; cursor: not-allowed; }
+        .subscribe-btn:hover { border-color: var(--white); background: #151515; }
+        .subscribe-btn:disabled { color: #666; cursor: not-allowed; }
 
         .form-message {
             padding: 16px;
@@ -202,10 +241,9 @@
             display: block;
             border: 1px solid #a33;
             color: #f88;
-            background: #0a1a0a;
+            background: #0a0a0a;
         }
 
-        /* Кнопка на главную */
         .back-btn {
             display: inline-block;
             margin-top: 60px;
@@ -217,12 +255,8 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             transition: 0.3s;
-            animation: fadeUp 1s ease 0.6s backwards;
         }
-        .back-btn:hover {
-            border-color: var(--white);
-            background: #151515;
-        }
+        .back-btn:hover { border-color: var(--white); background: #151515; }
 
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -275,20 +309,31 @@
     <h1 class="soon-title">Скоро</h1>
     <p class="soon-sub">
         Первая коллекция уже в работе.<br>
-        Оставь контакт — сообщим первым, когда дроп будет готов
+        Подпишись — сообщим первым, когда дроп будет готов
     </p>
 
     <div class="divider"></div>
 
     <div class="subscribe-block">
         <h2>Узнать первым</h2>
-        <p>Оставь почту или Telegram — напишем, когда откроется магазин</p>
+        <p>Выбери, как удобнее получать анонсы</p>
 
+        <!-- Кнопка Telegram -->
+        <a href="https://t.me/zadetclo_announce_bot" target="_blank" class="telegram-btn" id="telegram-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+            </svg>
+            Подписаться в Telegram
+        </a>
+
+        <div class="or-divider">или</div>
+
+        <!-- Форма Email -->
         <form class="subscribe-form" id="subscribe-form" action="https://formspree.io/f/xoeezkeq" method="POST">
             <input type="email" name="email" required placeholder="Email *">
-            <input type="text" name="telegram" placeholder="Telegram (@username)">
+            <input type="text" name="telegram" placeholder="Telegram (@username, необязательно)">
             <input type="hidden" name="form_type" value="Подписка на дроп">
-            <button type="submit" class="subscribe-btn" id="subscribe-btn">Подписаться</button>
+            <button type="submit" class="subscribe-btn" id="subscribe-btn">Подписаться на email</button>
             <div class="form-message" id="form-message"></div>
         </form>
     </div>
@@ -340,7 +385,7 @@
         var email = formData.get('email');
         var telegram = formData.get('telegram');
 
-        var tgText = '🔔 НОВАЯ ПОДПИСКА НА ДРОП — ЗАДЕТ\n\n';
+        var tgText = '🔔 НОВАЯ EMAIL-ПОДПИСКА — ЗАДЕТ\n\n';
         tgText += '📧 Email: ' + (email || '—') + '\n';
         if (telegram) tgText += '💬 Telegram: ' + telegram;
 
@@ -368,7 +413,7 @@
         })
         .finally(function() {
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Подписаться';
+            submitBtn.textContent = 'Подписаться на email';
         });
     });
 </script>

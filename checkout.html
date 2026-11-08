@@ -239,7 +239,7 @@
             display: block;
             border: 1px solid #a33;
             color: #f88;
-            background: #1a0a0a;
+            background: #0a0a0a;
         }
 
         @media (max-width: 900px) {
@@ -278,7 +278,7 @@
         <ul>
             <li><a href="shop.html">Магазин</a></li>
             <li><a href="index.html#collections">Коллекции</a></li>
-            <li><a href="index.html#custom">Пошив</a></li>
+            <li><a href="custom.html">Пошив</a></li>
             <li><a href="index.html#about">О бренде</a></li>
             <li><a href="index.html#contact">Контакты</a></li>
         </ul>
@@ -429,7 +429,6 @@
 
     function sendToTelegram(data) {
         if (typeof TELEGRAM_BOT_TOKEN === 'undefined' || TELEGRAM_BOT_TOKEN.indexOf('ВСТАВЬ') !== -1) {
-            console.warn('Telegram: токен не настроен');
             return Promise.resolve();
         }
 
@@ -451,15 +450,8 @@
                 fetch('https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        chat_id: TELEGRAM_CHAT_IDS[i],
-                        text: text
-                    })
-                }).then(function(r) {
-                    if (!r.ok) console.warn('Telegram: ошибка отправки', r.status);
-                }).catch(function(err) {
-                    console.warn('Telegram: сетевая ошибка', err);
-                })
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_IDS[i], text: text })
+                }).catch(function() {})
             );
         }
         return Promise.all(promises);
@@ -509,13 +501,15 @@
         .then(function(results) {
             var mailOk = results[0] && results[0].ok;
             if (mailOk) {
-                formMessage.textContent = '✓ Заказ отправлен! Мы свяжемся с тобой в ближайшее время.';
+                formMessage.textContent = '✓ Заказ отправлен! Сейчас перенаправим...';
                 formMessage.className = 'form-message success';
                 form.reset();
                 localStorage.removeItem('zadet_cart');
                 if (typeof updateCartCount === 'function') updateCartCount();
                 renderOrder();
-                setTimeout(function() { window.location.href = 'index.html'; }, 4000);
+                setTimeout(function() {
+                    window.location.href = 'thanks.html';
+                }, 1500);
             } else {
                 throw new Error('Ошибка отправки почты');
             }
